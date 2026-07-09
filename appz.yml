@@ -10,7 +10,7 @@ build:
     image_template: node-22.11
 
 deploy:
-    context: nithin-cloud/DEV
+    context: nithinc-cloud/DEV
     replicas: 1
     port:
     - 3000
