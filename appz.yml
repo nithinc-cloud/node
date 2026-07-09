@@ -17,4 +17,4 @@ deploy:
     ingress: none
     
 properties:
-    revision: 0
+    revision: 1
