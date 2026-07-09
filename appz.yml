@@ -7,14 +7,14 @@ build:
     env: DEV
     build_file: none
     output_files: output/*.zip
-    image_template: node-14.17
+    image_template: node-22.11
 
 deploy:
-    context: alpha/DEV
+    context: nithin-cloud/DEV
     replicas: 1
     port:
     - 3000
     ingress: none
     
 properties:
-    revision: 21
+    revision: 0
