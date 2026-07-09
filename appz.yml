@@ -1,0 +1,20 @@
+app:
+    name: sast-dashboard-ui
+    code: SAST-DASHBOARD-ui   
+
+build:
+    version: 1.0
+    env: DEV
+    build_file: none
+    output_files: output/*.zip
+    image_template: node-14.17
+
+deploy:
+    context: alpha/DEV
+    replicas: 1
+    port:
+    - 3000
+    ingress: none
+    
+properties:
+    revision: 21

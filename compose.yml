@@ -1,0 +1,29 @@
+services:
+  ui:
+    build:
+      context: .
+      dockerfile: Containerfile
+    image: sast-dashboard-ui:local
+    pull_policy: missing
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      API_URL: https://uat-dc-app1nexusdevops.dhanbank.com/devops-sast-api/
+    ports:
+      - "4000:3000"
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - node -e "const http=require('node:http');const req=http.get('http://127.0.0.1:3000/devops-sast-reports/',res=>process.exit(res.statusCode>=200&&res.statusCode<400?0:1));req.on('error',()=>process.exit(1));"
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
