@@ -7,7 +7,7 @@ build:
     env: DEV
     build_file: none
     output_files: output/*.zip
-    image_template: node-22.11
+    image_template: node-22.23
 
 deploy:
     context: nithinc-cloud/DEV
